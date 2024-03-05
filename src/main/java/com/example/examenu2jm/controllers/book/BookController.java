@@ -34,6 +34,16 @@ public class BookController {
         return new ResponseEntity<>(this.service.getBooksByPublicationDate(), HttpStatus.OK);
     }
 
+    @GetMapping("/author/{author}")
+    public ResponseEntity<CustomResponse<List<Book>>> findByAuthor(@Valid @PathVariable String author) {
+        return new ResponseEntity<>(this.service.findByAuthor(author), HttpStatus.OK);
+    }
+
+    @GetMapping("/getByImage")
+    public ResponseEntity<CustomResponse<List<Book>>> getBooksByImage() {
+        return new ResponseEntity<>(this.service.getBooksByImage(), HttpStatus.OK);
+    }
+
     @PostMapping("/")
     public ResponseEntity<CustomResponse<Book>> insert(@Valid @RequestBody BookDto bookDto) {
         return new ResponseEntity<>(this.service.insert(bookDto.castToBook()), HttpStatus.CREATED);

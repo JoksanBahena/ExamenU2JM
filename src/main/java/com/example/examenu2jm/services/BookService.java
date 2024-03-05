@@ -54,6 +54,35 @@ public class BookService {
         );
     }
 
+    @Transactional(readOnly = true)
+    public CustomResponse<List<Book>> findByAuthor(String author) {
+        if (!this.repository.existsByAuthor(author)) {
+            return new CustomResponse<>(
+                    null,
+                    true,
+                    404,
+                    "No se encontraron libros con ese autor"
+            );
+        }
+
+        return new CustomResponse<>(
+                this.repository.findByAuthor(author),
+                false,
+                200,
+                "ok"
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public CustomResponse<List<Book>> getBooksByImage() {
+        return new CustomResponse<>(
+                this.repository.getBookByImage_book(),
+                false,
+                200,
+                "ok"
+        );
+    }
+
     @Transactional(rollbackFor = {Exception.class})
     public CustomResponse<Book> insert(Book book) {
         return new CustomResponse<>(
