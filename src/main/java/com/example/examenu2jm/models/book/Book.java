@@ -23,8 +23,8 @@ public class Book {
     @Column(name = "author", nullable = false, length = 255)
     private String author;
 
-    @Column(name = "publicate_date", nullable = false)
-    private Date publicate_date;
+    @Column(name = "publication_date", nullable = false)
+    private Date publication_date;
 
     @Column(name = "image_book", nullable = true)
     private String image_book;

@@ -44,6 +44,16 @@ public class BookService {
         );
     }
 
+    @Transactional(readOnly = true)
+    public CustomResponse<List<Book>> getBooksByPublicationDate() {
+        return new CustomResponse<>(
+                this.repository.getBookByPublication_date(),
+                false,
+                200,
+                "ok"
+        );
+    }
+
     @Transactional(rollbackFor = {Exception.class})
     public CustomResponse<Book> insert(Book book) {
         return new CustomResponse<>(

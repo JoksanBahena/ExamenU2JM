@@ -29,6 +29,11 @@ public class BookController {
         return new ResponseEntity<>(this.service.getById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/getByPublicateDate")
+    public ResponseEntity<CustomResponse<List<Book>>> getBooksByPublicateDate() {
+        return new ResponseEntity<>(this.service.getBooksByPublicationDate(), HttpStatus.OK);
+    }
+
     @PostMapping("/")
     public ResponseEntity<CustomResponse<Book>> insert(@Valid @RequestBody BookDto bookDto) {
         return new ResponseEntity<>(this.service.insert(bookDto.castToBook()), HttpStatus.CREATED);

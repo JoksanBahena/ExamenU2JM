@@ -26,11 +26,11 @@ public class BookDto {
     private String author;
 
     @NotEmpty(message = "Campo obligatorio")
-    private Date publicate_date;
+    private Date publication_date;
 
     private String image_book;
 
     public Book castToBook() {
-        return new Book(getId(), getName(), getAuthor(), getPublicate_date(), getImage_book());
+        return new Book(getId(), getName(), getAuthor(), getPublication_date(), getImage_book());
     }
 }
